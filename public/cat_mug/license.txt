@@ -1,0 +1,11 @@
+Model Information:
+* title:	Cat Mug
+* source:	https://sketchfab.com/3d-models/cat-mug-bcc6c5ecfa13476c98ee40ee968bd17f
+* author:	thelettervi (https://sketchfab.com/thelettervi)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Cat Mug" (https://sketchfab.com/3d-models/cat-mug-bcc6c5ecfa13476c98ee40ee968bd17f) by thelettervi (https://sketchfab.com/thelettervi) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
