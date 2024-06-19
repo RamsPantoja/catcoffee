@@ -5,8 +5,6 @@ import Coffee from "~/components/Coffee";
 import { api } from "~/utils/api";
 
 export default function Home() {
-  const hello = api.post.hello.useQuery({ text: "from tRPC" });
-
   return (
     <>
       <Head>
@@ -49,7 +47,7 @@ function AuthShowcase() {
         className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
         onClick={sessionData ? () => void signOut() : () => void signIn()}
       >
-        {sessionData ? "Sign out" : "Unete a la Waitlist"}
+        {sessionData ? "Sign out" : "Únete a la Waitlist"}
       </button>
     </div>
   );
