@@ -24,15 +24,15 @@ export default function Home() {
               El café que impulsa la innovación
             </h1>
             <p className="text-grayStrong text-2xl font-semibold text-center">Impulsando la productividad y la creatividad de los Developers</p>
-            <div className="flex flex-col items-center gap-2">
+            {/* <div className="flex flex-col items-center gap-2">
               <AuthShowcase />
-            </div>
+            </div> */}
           </div>
           <div className="flex flex-col gap-2 w-full justify-center items-center">
             <Coffee />
           </div>
           <div className="flex flex-col gap-4 items-center">
-            <p className="text-whiteMain font-bold text-4xl">Coffi</p>
+            <p className="text-whiteMain font-bold text-4xl">Misión</p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Card className="flex-col flex gap-1 border-none">
                 <p className="text-grayStrong">
