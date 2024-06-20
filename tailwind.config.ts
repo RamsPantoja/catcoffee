@@ -16,7 +16,7 @@ export default {
         grayMain: '#6A6A6A',
         grayStrong: "#888888",
         blackMain: '#000000',
-        blackNormal: "#181818",
+        blackNormal: "#212121",
         blackLigth: '#0f0f0f',
         pinkLigth: "#fec7f6",
         pinkStrong: "#fa23b6",
@@ -44,4 +44,5 @@ export default {
       },
     },
   },
-} satisfies Config;
+  plugins: [require("tailwindcss-animate")],
+} satisfies Config
