@@ -107,7 +107,7 @@ const Coffee = () => {
             renderer.shadowMap.type = THREE.PCFSoftShadowMap;
             renderer.outputColorSpace = THREE.SRGBColorSpace;
 
-            const bloomPass = new UnrealBloomPass(new THREE.Vector2(sizes.width, sizes.height), 0.2, 0.5, 0.5);
+            const bloomPass = new UnrealBloomPass(new THREE.Vector2(sizes.width, sizes.height), 0.2, 0, 0.5);
 
             const renderScene = new RenderPass(scene, camera);
 
@@ -142,6 +142,15 @@ const Coffee = () => {
 
             const clipAnimation = model.animations[0];
 
+            model.scene.traverse((o) => {
+                //@ts-expect-error The property isMesh of objects exist but is not defined in the set of types for threeJS
+                if (o.isMesh) {
+                    //@ts-expect-error The property material of objects exist but is not defined in the set of types for threeJS
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+                    o.material.wireframe = true;
+                }
+            })
+
             if (clipAnimation) {
                 mixer.clipAction(clipAnimation).reset().play();
             }
@@ -175,7 +184,7 @@ const Coffee = () => {
     }, [containerRef, model])
 
     return (
-        <div className='flex gap-2 w-full max-w-[400px] h-[400px] relative overflow-hidden rounded-full border'>
+        <div className='flex gap-2 w-full max-w-[400px] h-[400px] relative overflow-hidden rounded-full'>
             <canvas ref={containerRef} className='w-full h-full absolute bg-transparent' />
         </div>
     )
