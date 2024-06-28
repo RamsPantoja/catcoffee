@@ -24,9 +24,9 @@ export default function Home() {
               El café que impulsa la innovación
             </h1>
             <p className="text-grayStrong text-2xl font-semibold text-center">Impulsando la productividad y la creatividad de los Developers</p>
-            {/* <div className="flex flex-col items-center gap-2">
+            <div className="flex flex-col items-center gap-2">
               <AuthShowcase />
-            </div> */}
+            </div>
           </div>
           <div className="flex flex-col gap-2 w-full justify-center items-center">
             <Coffee />
@@ -103,7 +103,7 @@ function AuthShowcase() {
         {secretMessage && <span> - {secretMessage}</span>}
       </p>
       <button
-        className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
+        className="rounded-full bg-white px-10 py-3 font-semibold text-black no-underline transition hover:bg-white/70"
         onClick={sessionData ? () => void signOut() : () => void signIn()}
       >
         {sessionData ? "Sign out" : "Únete a la Waitlist"}

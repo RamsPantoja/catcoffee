@@ -1,4 +1,4 @@
-import { DrizzleAdapter } from "@auth/drizzle-adapter";
+import { DrizzleAdapter } from "@auth/drizzle-adapter"
 import { type GetServerSidePropsContext } from "next";
 import {
   getServerSession,
@@ -14,6 +14,9 @@ import {
   users,
   verificationTokens,
 } from "~/server/db/schema";
+
+import GoogleProvider from "next-auth/providers/google";
+import { env } from "~/env";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -58,6 +61,10 @@ export const authOptions: NextAuthOptions = {
     verificationTokensTable: verificationTokens,
   }) as Adapter,
   providers: [
+    GoogleProvider({
+      clientId: env.GOOGLE_CLIENT_ID,
+      clientSecret: env.GOOGLE_CLIENT_SECRET
+    })
     /**
      * ...add more providers here.
      *

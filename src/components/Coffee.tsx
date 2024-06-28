@@ -147,7 +147,7 @@ const Coffee = () => {
                 if (o.isMesh) {
                     //@ts-expect-error The property material of objects exist but is not defined in the set of types for threeJS
                     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-                    o.material.wireframe = true;
+                    o.material.wireframe = false;
                 }
             })
 
