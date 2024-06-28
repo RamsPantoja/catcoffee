@@ -25,7 +25,7 @@ export default function Home() {
             </h1>
             <p className="text-grayStrong text-2xl font-semibold text-center">Impulsando la productividad y la creatividad de los Developers</p>
             <div className="flex flex-col items-center gap-2">
-              <AuthShowcase />
+              {/* <AuthShowcase /> */}
             </div>
           </div>
           <div className="flex flex-col gap-2 w-full justify-center items-center">
