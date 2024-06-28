@@ -5,6 +5,7 @@ import {
   primaryKey,
   sqliteTableCreator,
   text,
+  integer
 } from "drizzle-orm/sqlite-core";
 import { type AdapterAccount } from "next-auth/adapters";
 
@@ -14,10 +15,10 @@ import { type AdapterAccount } from "next-auth/adapters";
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const createTable = sqliteTableCreator((name) => `catcoffee_${name}`);
+export const createTable = sqliteTableCreator((name) => name);
 
 export const users = createTable("user", {
-  id: text("id", { length: 255 }).notNull().primaryKey(),
+  id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
   name: text("name", { length: 255 }),
   email: text("email", { length: 255 }).notNull(),
   emailVerified: int("emailVerified", {
@@ -33,7 +34,7 @@ export const usersRelations = relations(users, ({ many }) => ({
 export const accounts = createTable(
   "account",
   {
-    userId: text("userId", { length: 255 })
+    userId: integer("userId")
       .notNull()
       .references(() => users.id),
     type: text("type", { length: 255 })
@@ -65,7 +66,7 @@ export const sessions = createTable(
   "session",
   {
     sessionToken: text("sessionToken", { length: 255 }).notNull().primaryKey(),
-    userId: text("userId", { length: 255 })
+    userId: integer("userId")
       .notNull()
       .references(() => users.id),
     expires: int("expires", { mode: "timestamp" }).notNull(),
@@ -89,4 +90,14 @@ export const verificationTokens = createTable(
   (vt) => ({
     compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
   })
+);
+
+export const waitlistUsers = createTable(
+  "waitlist_user",
+  {
+    id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
+    name: text("name").notNull(),
+    email: text("email").notNull(),
+    createdAt: integer('createdAt', { mode: 'timestamp' }).notNull().default(sql`(CURRENT_TIMESTAMP)`)
+  }
 );

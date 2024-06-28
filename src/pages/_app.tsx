@@ -6,6 +6,7 @@ import { type AppType } from "next/app";
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
+import { Toaster } from "sonner";
 
 const font = Inconsolata({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
+      <Toaster richColors />
       <main className={font.className}>
         <Component {...pageProps} />
       </main>

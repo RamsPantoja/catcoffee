@@ -6,8 +6,8 @@ export default {
   ],
   theme: {
     fontFamily: {
-      sans: ['__Nunito_14f33d', '__Nunito_Fallback_14f33d', 'sans-serif'],
-      serif: ['__Nunito_14f33d', '__Nunito_Fallback_14f33d', 'serif'],
+      sans: ['__Inconsolata_c33693', '__Inconsolata_Fallback_c33693', 'sans-serif'],
+      serif: ['__Inconsolata_c33693', '__Inconsolata_Fallback_c33693', 'serif'],
     },
     extend: {
       colors: {
@@ -18,10 +18,6 @@ export default {
         blackMain: '#000000',
         blackNormal: "#212121",
         blackLigth: '#0f0f0f',
-        pinkLigth: "#fec7f6",
-        pinkStrong: "#fa23b6",
-        lemonLigth: "#e2fe8d",
-        lemonStrong: "#51cf2d"
       },
       borderRadius: {
         lg: "0.5rem",
