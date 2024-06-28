@@ -8,6 +8,7 @@ import {
   integer
 } from "drizzle-orm/sqlite-core";
 import { type AdapterAccount } from "next-auth/adapters";
+import { typeid } from 'typeid-js';
 
 /**
  * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
@@ -18,7 +19,9 @@ import { type AdapterAccount } from "next-auth/adapters";
 export const createTable = sqliteTableCreator((name) => name);
 
 export const users = createTable("user", {
-  id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => typeid().toUUID()),
   name: text("name", { length: 255 }),
   email: text("email", { length: 255 }).notNull(),
   emailVerified: int("emailVerified", {
@@ -34,9 +37,9 @@ export const usersRelations = relations(users, ({ many }) => ({
 export const accounts = createTable(
   "account",
   {
-    userId: integer("userId")
+    userId: text("userId")
       .notNull()
-      .references(() => users.id),
+      .references(() => users.id, { onDelete: "cascade" }),
     type: text("type", { length: 255 })
       .$type<AdapterAccount["type"]>()
       .notNull(),
@@ -66,9 +69,9 @@ export const sessions = createTable(
   "session",
   {
     sessionToken: text("sessionToken", { length: 255 }).notNull().primaryKey(),
-    userId: integer("userId")
+    userId: text("userId")
       .notNull()
-      .references(() => users.id),
+      .references(() => users.id, { onDelete: "cascade" }),
     expires: int("expires", { mode: "timestamp" }).notNull(),
   },
   (session) => ({
@@ -95,7 +98,9 @@ export const verificationTokens = createTable(
 export const waitlistUsers = createTable(
   "waitlist_user",
   {
-    id: integer('id', { mode: 'number' }).primaryKey({ autoIncrement: true }),
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => typeid().toUUID()),
     name: text("name").notNull(),
     email: text("email").notNull(),
     createdAt: integer('createdAt', { mode: 'timestamp' }).notNull().default(sql`(CURRENT_TIMESTAMP)`)
